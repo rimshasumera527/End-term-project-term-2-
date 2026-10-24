@@ -13,10 +13,31 @@
 
 body {
   font-family: var(--font-body);
-  background-color: var(--color-ivory);
+  background: linear-gradient(175deg, #fffdf6 0%, #fdf8ea 40%, #f6f1e2 100%);
   color: #27272a;
+  min-height: 100vh;
 }
 
-h1, h2, h3, .serif {
-  font-family: var(--font-display);
-}
+h1, h2, h3, .serif { font-family: var(--font-display); }
+
+@keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+@keyframes blobDrift { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(34px,-40px) scale(1.15); } 100% { transform: translate(-22px,24px) scale(.95); } }
+@keyframes marquee { to { transform: translateX(-50%); } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+@keyframes shine { from { background-position: 200% center; } to { background-position: -200% center; } }
+@keyframes underline { from { width: 0; } to { width: 100%; } }
+
+.reveal > * { opacity: 0; animation: fadeUp .8s cubic-bezier(.2,.7,.3,1) forwards; }
+.reveal > *:nth-child(1) { animation-delay: .05s } .reveal > *:nth-child(2) { animation-delay: .15s }
+.reveal > *:nth-child(3) { animation-delay: .25s } .reveal > *:nth-child(4) { animation-delay: .35s }
+.reveal > *:nth-child(5) { animation-delay: .45s } .reveal > *:nth-child(6) { animation-delay: .55s }
+
+.blob { position: absolute; border-radius: 9999px; filter: blur(90px); opacity: .4; animation: blobDrift 16s ease-in-out infinite alternate; pointer-events: none; }
+.float { animation: floatY 6s ease-in-out infinite; }
+.marquee { display: flex; width: max-content; animation: marquee 30s linear infinite; }
+.hover-lift { transition: transform .35s cubic-bezier(.2,.7,.3,1), box-shadow .35s; }
+.hover-lift:hover { transform: translateY(-8px); box-shadow: 0 24px 48px -20px rgba(67,56,202,.35); }
+.glass { background: rgba(255,253,246,.7); backdrop-filter: blur(16px); border: 1px solid rgba(67,56,202,.08); box-shadow: 0 8px 32px rgba(67,56,202,.06); }
+.shine-text { background: linear-gradient(110deg, #1e1b4b 30%, #818cf8 48%, #1e1b4b 62%); background-size: 200% auto; background-clip: text; -webkit-background-clip: text; color: transparent; animation: shine 5s linear infinite; }
+.rule-grow { height: 3px; background: linear-gradient(90deg, #d97706, #4338ca); width: 0; animation: underline 1s .4s ease forwards; }
+.noise::after { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .045; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E"); }
