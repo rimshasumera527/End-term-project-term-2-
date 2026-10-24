@@ -6,6 +6,7 @@ const Review = require('../models/Review.model');
 const AppError = require('../utils/AppError');
 const asyncHandler = require('../utils/asyncHandler');
 const { toMin, overlaps, atTime } = require('../utils/time');
+const extra = require('./extra.controller');
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 const CANCEL_NOTICE_HOURS = 12;
@@ -27,6 +28,7 @@ const rescheduleSchema = z.object({
 async function assertFree(tutorId, studentId, date, start, end, excludeBookingId = null) {
   if (toMin(start) >= toMin(end)) throw new AppError(400, 'End time must be after start time');
   const weekday = new Date(date).getDay();
+  if (extra.isBlackouted(tutorId, date)) throw new AppError(400, 'The tutor is unavailable on that date');
 
   const slots = await Availability.find({ tutor: tutorId, weekday });
   const within = slots.some((s) => toMin(s.start) <= toMin(start) && toMin(end) <= toMin(s.end));

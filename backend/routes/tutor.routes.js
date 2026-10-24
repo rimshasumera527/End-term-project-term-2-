@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const c = require('../controllers/tutor.controller');
 const b = require('../controllers/booking.controller');
+const extra = require('../controllers/extra.controller');
 const { requireAuth } = require('../middlewares/auth');
 
 // Public discovery
@@ -18,6 +19,10 @@ router.patch('/bookings/:id/complete', requireAuth, b.complete);
 router.post('/bookings/:id/review', requireAuth, b.review);
 router.get('/dashboard/tutor', requireAuth, b.tutorDashboard);
 router.get('/dashboard/student', requireAuth, b.studentDashboard);
+router.get('/stats/me', requireAuth, extra.myStats);
+router.get('/calendar.ics', requireAuth, extra.calendar);
+router.post('/availability/blackouts', requireAuth, extra.setBlackouts);
+router.get('/availability/blackouts', requireAuth, extra.getBlackouts);
 
 // Public detail — must come after the specific routes above
 router.get('/:id', c.getOne);

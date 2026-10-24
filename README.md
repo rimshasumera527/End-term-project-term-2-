@@ -163,6 +163,10 @@ Live links: backend — [add URL] · frontend — [add URL]
 - Central error middleware → `{ error: { message } }`; the frontend shows
   loading/empty/error/success states everywhere and toasts every mutation.
 
+- **Calendar export (ICS)** — every session feed imports into Google Calendar, Apple Calendar or Outlook.
+- **Blackout dates** — tutors block leave/exam dates; the booking engine refuses those days.
+- **Learning & teaching stats** — sessions, hours, earnings/spend, cancellations and per-subject counts.
+
 ## Roadmap
 
 - Online payments with escrow release after session completion.
