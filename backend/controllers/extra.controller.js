@@ -69,7 +69,7 @@ exports.myStats = asyncHandler(async (req, res) => {
   const completed = all.filter((b) => b.status === 'completed');
   const bySubject = {};
   for (const b of all) bySubject[b.subject] = (bySubject[b.subject] || 0) + 1;
-  const now = Date.now();
+  const today = new Date(); today.setHours(0, 0, 0, 0);
   const hoursLearned = completed.reduce((s, b) => {
     const [sh, sm] = b.start.split(':').map(Number); const [eh, em] = b.end.split(':').map(Number);
     return s + (eh * 60 + em - (sh * 60 + sm)) / 60;
@@ -77,7 +77,7 @@ exports.myStats = asyncHandler(async (req, res) => {
   res.json({
     totalSessions: all.length,
     completed: completed.length,
-    upcoming: all.filter((b) => b.status === 'booked' && new Date(b.date) >= new Date(now.setHours(0, 0, 0, 0))).length,
+    upcoming: all.filter((b) => b.status === 'booked' && new Date(b.date) >= today).length,
     hours: Math.round(hoursLearned * 10) / 10,
     totalSpendOrEarn: completed.reduce((s, b) => s + b.price, 0),
     bySubject,
