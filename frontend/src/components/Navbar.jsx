@@ -13,6 +13,7 @@ export default function Navbar() {
         </Link>
         <nav className="flex items-center gap-1 text-sm font-semibold">
           <Link to="/tutors" className="rounded-full px-3 py-2 text-slate-600 hover:text-brand">Find tutors</Link>
+          <Link to="/guide" className="rounded-full px-3 py-2 text-sm font-semibold opacity-60 hover:opacity-100">📖 Guide</Link>
           {user ? (
             <>
               <Link to="/bookings" className="rounded-full px-3 py-2 text-slate-600 hover:text-brand">Sessions</Link>

@@ -7,6 +7,7 @@ import TutorDetail from './pages/TutorDetail.jsx';
 import MyBookings from './pages/MyBookings.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import NotFound from './pages/NotFound.jsx';
+import Guide from './pages/Guide.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/bookings" element={<MyBookings />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Route>
+      <Route path="/guide" element={<Guide />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
