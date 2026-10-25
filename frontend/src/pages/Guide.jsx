@@ -20,9 +20,9 @@ export default function Guide() {
       <main className="relative mx-auto max-w-3xl px-4 py-12">
         <p className="text-xs font-bold uppercase tracking-[0.35em] opacity-60">1-minute guide</p>
         <h1 className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">
-          How {title} works
+          How TutorSlot works
         </h1>
-        <p className="mt-2 text-lg opacity-60">{tag}</p>
+        <p className="mt-2 text-lg opacity-60">Book tutoring sessions without the back-and-forth</p>
 
         <ol className="mt-10 space-y-4">
           {STEPS.map(([n, title, body], i) => (
