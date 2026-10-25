@@ -23,6 +23,7 @@ export function AuthProvider({ children }) {
     localStorage.setItem('ts_token', res.data.token);
     localStorage.setItem('ts_user', JSON.stringify(res.data));
     setUser(res.data);
+    return res.data;
   }
 
   async function register(payload) {
@@ -30,6 +31,7 @@ export function AuthProvider({ children }) {
     localStorage.setItem('ts_token', res.data.token);
     localStorage.setItem('ts_user', JSON.stringify(res.data));
     setUser(res.data);
+    return res.data;
   }
 
   function logout() {
