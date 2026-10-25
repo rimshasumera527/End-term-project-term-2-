@@ -44,14 +44,14 @@ export default function Landing() {
               booking flow with real cancellation rules.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <Link to="/tutors" className="hover-lift rounded-full bg-brand px-8 py-4 font-semibold text-white shadow-xl shadow-indigo-400/30">Browse tutors →</Link>
-              <Link to="/register" className="glass rounded-full px-8 py-4 font-semibold text-brand">Become a tutor</Link>
+              <Link to="/tutors" className="btn-3d hover-lift rounded-full bg-brand px-8 py-4 font-semibold text-white shadow-xl shadow-indigo-400/30">Browse tutors →</Link>
+              <Link to="/register" className="btn-3d glass tilt-card rounded-full px-8 py-4 font-semibold text-brand">Become a tutor</Link>
             </div>
           </div>
 
           {/* editorial tutor card */}
           <div className="relative">
-            <div className="glass float rounded-[2rem] p-7 shadow-2xl shadow-indigo-200/60">
+            <div className="glass tilt-card float rounded-[2rem] p-7 shadow-2xl shadow-indigo-200/60">
               <div className="flex items-center justify-between border-b border-indigo-100 pb-4">
                 <p className="serif text-sm italic text-slate-400">This week's openings</p>
                 <span className="rounded-full bg-gold-soft px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-amber-700">Mon–Sat · 4–8 PM</span>
