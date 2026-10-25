@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar.jsx';
 import { Loading, ErrorState } from '../components/states.jsx';
 import { Stars, StatusChip } from '../components/ui.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
+import SceneBackground from '../components/SceneBackground.jsx';
 
 export default function Dashboard() {
   const { user } = useAuth();
@@ -20,12 +21,13 @@ export default function Dashboard() {
       .catch((err) => setError(err.message));
   }, [isTutor]);
 
-  if (error) return <div className="min-h-screen"><Navbar /><main className="mx-auto max-w-4xl px-4 py-10"><ErrorState message={error} /></main></div>;
+  if (error) return <div className="relative min-h-screen"><Navbar />
+      <SceneBackground /><main className="relative mx-auto max-w-4xl px-4 py-10"><ErrorState message={error} /></main></div>;
 
   return (
-    <div className="min-h-screen">
+    <div className="relative min-h-screen">
       <Navbar />
-      <main className="mx-auto max-w-4xl px-4 py-10">
+      <main className="relative mx-auto max-w-4xl px-4 py-10">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h1 className="text-3xl font-bold text-inkblue">{isTutor ? 'Tutor dashboard' : 'Your learning dashboard'}</h1>
           <a href={`${import.meta.env.VITE_API_URL || 'http://localhost:5102/api'}/tutors/calendar.ics`} target="_blank" rel="noreferrer"
